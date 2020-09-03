@@ -10,11 +10,28 @@ import Foundation
 
 protocol NetworkDataProtocol {
     func getSession(completion: @escaping(Result<SessionData?, Error>) -> Void)
+    func getNotes(session: String, completion: @escaping(Result<NoteData?, Error>) -> Void)
+    func addEntry(session: String, body: String, completion: @escaping(Result<SessionData?, Error>) -> Void)
 }
 
 final class NetworkData: NetworkDataProtocol {
+    
     static let networkData = NetworkData()
     let requestNetwork = RequestNetwork()
+    
+    func addEntry(session: String, body: String, completion: @escaping (Result<SessionData?, Error>) -> Void) {
+        let parameters = ["session": session,
+                          "body" : body,
+                          "a" : API.addEntry
+                        ]
+        self.fetchJSON(parameters: parameters, response: completion)
+    }
+    
+    func getNotes(session: String, completion: @escaping (Result<NoteData?, Error>) -> Void) {
+        let parameters = ["session" : session,
+                          "a" : API.getEntries]
+        self.fetchJSON(parameters: parameters, response: completion)
+    }
     
     func getSession(completion: @escaping (Result<SessionData?, Error>) -> Void) {
         let parameters = ["a" : API.newSession]

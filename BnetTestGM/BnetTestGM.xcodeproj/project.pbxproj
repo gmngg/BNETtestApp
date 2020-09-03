@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		504693F225018C4D000FF54C /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504693F125018C4D000FF54C /* MainViewModel.swift */; };
 		50991FF524ED51EC00412838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50991FF424ED51EC00412838 /* AppDelegate.swift */; };
 		50991FFB24ED51EE00412838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50991FFA24ED51EE00412838 /* Assets.xcassets */; };
 		50991FFE24ED51EE00412838 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50991FFD24ED51EE00412838 /* Preview Assets.xcassets */; };
@@ -14,7 +15,6 @@
 		5099201724ED68C300412838 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099201624ED68C300412838 /* MainViewController.swift */; };
 		5099201D24ED71BE00412838 /* MainViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099201C24ED71BE00412838 /* MainViewCell.swift */; };
 		5099201F24ED772400412838 /* MailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099201E24ED772400412838 /* MailInteractor.swift */; };
-		5099202124ED924800412838 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099202024ED924800412838 /* MainModel.swift */; };
 		5099202524ED93EA00412838 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099202424ED93EA00412838 /* Injectable.swift */; };
 		5099202724ED946900412838 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099202624ED946900412838 /* Assembly.swift */; };
 		5099202924ED949D00412838 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5099202824ED949D00412838 /* Router.swift */; };
@@ -28,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		504693F125018C4D000FF54C /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		50991FF124ED51EC00412838 /* BnetTestGM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BnetTestGM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50991FF424ED51EC00412838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50991FFA24ED51EE00412838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -37,7 +38,6 @@
 		5099201624ED68C300412838 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5099201C24ED71BE00412838 /* MainViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCell.swift; sourceTree = "<group>"; };
 		5099201E24ED772400412838 /* MailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailInteractor.swift; sourceTree = "<group>"; };
-		5099202024ED924800412838 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		5099202424ED93EA00412838 /* Injectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
 		5099202624ED946900412838 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		5099202824ED949D00412838 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -61,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		504693F025018C21000FF54C /* MainViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				504693F125018C4D000FF54C /* MainViewModel.swift */,
+			);
+			path = MainViewModel;
+			sourceTree = "<group>";
+		};
 		50991FE824ED51EC00412838 = {
 			isa = PBXGroup;
 			children = (
@@ -119,11 +127,11 @@
 		5099200A24ED5E5200412838 /* NetServise */ = {
 			isa = PBXGroup;
 			children = (
-				5099202C24EE9EB800412838 /* NetworkServise.swift */,
 				5099202E24EFE16400412838 /* NoteData.swift */,
 				5099203024EFE2E300412838 /* SessionData.swift */,
 				5099203224EFF74B00412838 /* API.swift */,
 				5099203424F3D98200412838 /* RequestNetwork.swift */,
+				5099202C24EE9EB800412838 /* NetworkServise.swift */,
 			);
 			path = NetServise;
 			sourceTree = "<group>";
@@ -140,9 +148,9 @@
 		5099200E24ED5EEA00412838 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				5099201424ED60CE00412838 /* Main */,
 				5099201324ED60BF00412838 /* NewNotes */,
 				5099201524ED613C00412838 /* ViewNotes */,
-				5099201424ED60CE00412838 /* Main */,
 				5099201224ED60B600412838 /* Interactor */,
 				5099201124ED60A500412838 /* Coordinator */,
 				5099201024ED608D00412838 /* Router */,
@@ -193,7 +201,7 @@
 		5099201424ED60CE00412838 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				5099201924ED716F00412838 /* MainModel */,
+				504693F025018C21000FF54C /* MainViewModel */,
 				5099201824ED715600412838 /* MainViewController */,
 			);
 			path = Main;
@@ -213,14 +221,6 @@
 				5099201A24ED718400412838 /* MainViewCell */,
 			);
 			path = MainViewController;
-			sourceTree = "<group>";
-		};
-		5099201924ED716F00412838 /* MainModel */ = {
-			isa = PBXGroup;
-			children = (
-				5099202024ED924800412838 /* MainModel.swift */,
-			);
-			path = MainModel;
 			sourceTree = "<group>";
 		};
 		5099201A24ED718400412838 /* MainViewCell */ = {
@@ -326,9 +326,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				504693F225018C4D000FF54C /* MainViewModel.swift in Sources */,
 				5099203B24F5C3C300412838 /* TimeInterval.swift in Sources */,
 				5099202924ED949D00412838 /* Router.swift in Sources */,
-				5099202124ED924800412838 /* MainModel.swift in Sources */,
 				5099201D24ED71BE00412838 /* MainViewCell.swift in Sources */,
 				5099201F24ED772400412838 /* MailInteractor.swift in Sources */,
 				5099202724ED946900412838 /* Assembly.swift in Sources */,

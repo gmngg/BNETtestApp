@@ -9,9 +9,9 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    var tableView: UITableView!
+    var tableView: UITableView()
     
-    var viewModel: MainModelInterface
+    let viewModel: MainViewModelInterface
     
     override func viewDidLoad() {
         
@@ -23,6 +23,8 @@ class MainViewController: UIViewController {
             tableView = UITableView(frame: view.bounds, style: .plain)
             tableView.delegate = self
             tableView.dataSource = self
+            viewModel.getSession()
+            viewModel.updateView()
         }
     }
     required init(container: Container) {
@@ -52,7 +54,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         return 0
     }
     
@@ -63,6 +65,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension MainViewController {
     struct Container {
-        let viewModel: MainModelInterface
+        let viewModel: MainViewModelInterface
     }
 }
