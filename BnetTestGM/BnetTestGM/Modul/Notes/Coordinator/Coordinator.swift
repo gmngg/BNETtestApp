@@ -13,7 +13,6 @@ protocol CoordinatorInput {
     weak var output: CoordinatorOutput? { get set }
     func start()
 }
-
 @objc
 protocol CoordinatorOutput {
     
@@ -21,7 +20,7 @@ protocol CoordinatorOutput {
 
 class Coordinator: NSObject {
     weak var output: CoordinatorOutput?
-    weak var interactor: InteractorInput?
+    var interactor: InteractorInput?
     
     var router: RouterInput!
 }
@@ -29,5 +28,15 @@ class Coordinator: NSObject {
 extension Coordinator: CoordinatorInput {
     func start() {
         router.routeToRoot()
+    }
+}
+
+extension Coordinator: MainViewModelOutput {
+    func tapOnFullView(note: Note?) {
+        router.routeViewNotes(note: note)
+    }
+    
+    func addNewNote(session: String) {
+        router.routeNewNotes(session: session)
     }
 }

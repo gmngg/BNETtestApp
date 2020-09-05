@@ -10,11 +10,10 @@ import UIKit
 
 import AuthenticationServices
 
-@objc
 protocol RouterInput {
     func routeToRoot()
-    func routeNewNotes()
-    func routeViewNotes()
+    func routeNewNotes(session: String)
+    func routeViewNotes(note: Note?)
 }
 
 class Router: NSObject {
@@ -29,13 +28,14 @@ class Router: NSObject {
 extension Router: RouterInput {
     func routeToRoot() {
         let viewController = assembly.mainViewController()
+        let navi = UINavigationController(rootViewController: viewController)
         
-        context?.rootViewController = viewController
+        context?.rootViewController = navi
         context?.makeKeyAndVisible()
     }
-    func routeNewNotes() {
+    func routeNewNotes(session: String) {
     }
-    func routeViewNotes() {
+    func routeViewNotes(note: Note?) {
     }
 }
 

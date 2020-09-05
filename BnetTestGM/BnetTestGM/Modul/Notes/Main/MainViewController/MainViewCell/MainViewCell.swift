@@ -19,18 +19,11 @@ class MainViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(note: Note) {
+    func configure(note: Note, data: String) {
         textLabel?.text = note.body
         textLabel?.numberOfLines = 0
         textLabel?.lineBreakMode = .byWordWrapping
         textLabel?.text = String(note.body.prefix(200))
-        let createdDate = Double(note.da)?.convertToTimeAndDate()
-        let modificateDate = Double(note.dm)?.convertToTimeAndDate()
-        
-        if createdDate == modificateDate {
-            detailTextLabel?.text = "Дата создания: \(createdDate ?? "Дата не найдена")"
-        } else {
-            detailTextLabel?.text = "Дата изменения: \(modificateDate ?? "Дата не найдена")"
-        }
+        detailTextLabel?.text = data
     }
 }

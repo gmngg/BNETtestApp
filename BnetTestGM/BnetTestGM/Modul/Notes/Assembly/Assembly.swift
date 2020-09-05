@@ -56,8 +56,8 @@ class Assembly {
     }
     
     func mainViewController() -> UIViewController {
-        let viewModel = MainModel(
-            container: MainModel.Container(
+        let viewModel = MainViewModel(
+            container: MainViewModel.Container(
                 interactor: interactor,
                 output: coordinator)
         )

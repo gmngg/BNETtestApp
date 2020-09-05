@@ -48,8 +48,6 @@
 		5099203224EFF74B00412838 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		5099203424F3D98200412838 /* RequestNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNetwork.swift; sourceTree = "<group>"; };
 		5099203A24F5C3C300412838 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
-		5099203E24FD43A500412838 /* NewNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNotesViewController.swift; sourceTree = "<group>"; };
-		5099204024FD62D800412838 /* NewNotesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNotesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -481,7 +479,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"BnetTestGM/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = BnetTestGM/Info.plist;
+				INFOPLIST_FILE = BnetTestGM/AppDelegate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -500,7 +498,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"BnetTestGM/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = BnetTestGM/Info.plist;
+				INFOPLIST_FILE = BnetTestGM/AppDelegate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

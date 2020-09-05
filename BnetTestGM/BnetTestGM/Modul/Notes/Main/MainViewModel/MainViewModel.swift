@@ -9,36 +9,67 @@
 import Foundation
 
 protocol MainViewModelInterface {
-    func updateView()
+    var showMassege: (() -> Void)? {get set}
+    func fullNote(note: Note?)
+    func addNewNote()
     var noteList: [Note]? {get set}
     var sessionId: String? {get set}
     func getSession()
-    func getNote()
+    func dataConfigure(note: Note?) -> String
 }
 
 protocol MainViewModelOutput {
-    func addNewNote()
-    func tapOnFullView()
+    func addNewNote(session: String)
+    func tapOnFullView(note: Note?)
 }
 
 class MainViewModel: MainViewModelInterface {
+    var showMassege: (() -> Void)?
     
-    func getNote() {
+    func fullNote(note: Note?) {
+        output.tapOnFullView(note: note)
     }
+    
+    func addNewNote() {
+        guard let sessionId = sessionId else {
+            return
+        }
+        output.addNewNote(session: sessionId)
+    }
+    
+    
+    func dataConfigure(note: Note?) -> String {
+        var data: String
+        guard let da = note?.da, let dm = note?.dm else {
+            data = "Дата не найдена"
+            return(data)
+        }
+        if da == dm {
+            let dam = Double(da)?.convertToTimeAndDate()
+            data = "Дата создания: \(dam!)"
+        } else {
+            let dmm = Double(dm)?.convertToTimeAndDate()
+            data = "Дата изменения: \(dmm!)"
+        }
+        
+        return data
+    }
+    
+    
+    var dataCreated: String?
     
     func getSession() {
         sessionId = userDefaults.string(forKey: "sessionId")
         if sessionId == nil {
             createdSession()
         } else {
-            getNote()
+            getNotes()
         }
     }
     
     var sessionId: String?
     var noteList: [Note]? {
         didSet {
-            updateView()
         }
     }
     
@@ -58,6 +89,7 @@ class MainViewModel: MainViewModelInterface {
             self?.userDefaults.set(self?.sessionId, forKey: "sessionId")
         }, failure: { (error) in
             print(error)
+            self.showMassege?()
         })
     }
     
@@ -82,9 +114,10 @@ extension MainViewModel {
 }
 
 extension MainViewModel: MainViewModelOutput {
-    func addNewNote() {
+    func addNewNote(session: String) {
+        
     }
     
-    func tapOnFullView() {
+    func tapOnFullView(note: Note?) {
     }
 }
