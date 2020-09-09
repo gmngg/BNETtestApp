@@ -32,11 +32,24 @@ extension Coordinator: CoordinatorInput {
 }
 
 extension Coordinator: MainViewModelOutput {
-    func tapOnFullView(note: Note?) {
+    func tapOnFullView(note: Note) {
         router.routeViewNotes(note: note)
     }
     
     func addNewNote(session: String) {
         router.routeNewNotes(session: session)
     }
+}
+
+extension Coordinator: NewNoteViewModelOutput {
+    func popToRoot() {
+        router.popToRoot()
+    }
+}
+
+extension Coordinator: FullNoteViewModelOutput {
+    func backRootView() {
+        router.popToRoot()
+    }
+    
 }

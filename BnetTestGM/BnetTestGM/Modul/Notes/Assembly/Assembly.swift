@@ -22,6 +22,7 @@ class Assembly {
             interactorCashe = interactor
             return interactorCashe!
         }
+        
         return interactor
     }()
     
@@ -32,6 +33,7 @@ class Assembly {
             routerCashe = router
             return routerCashe!
         }
+        
         return router
     }()
     
@@ -42,6 +44,7 @@ class Assembly {
             coordinatorCashe = coordinator
             return coordinatorCashe!
         }
+        
         return coordinator
     }()
     
@@ -61,9 +64,38 @@ class Assembly {
                 interactor: interactor,
                 output: coordinator)
         )
-        
         let viewController = MainViewController(
             container: MainViewController.Container(viewModel: viewModel)
+        )
+        
+        return viewController
+    }
+    
+    func newNoteViewController(sessionId: String) -> UIViewController{
+        let viewModel = NewNoteViewModel(
+            container: NewNoteViewModel.Container(
+                interactor: interactor,
+                output: coordinator,
+                sessionId: sessionId)
+        )
+        
+        let viewController = NewNoteViewController(
+            container: NewNoteViewController.Container(
+                viewModel: viewModel)
+        )
+        return viewController
+    }
+    
+    func fullNoteViewController(note: Note) -> UIViewController {
+        let viewModel = FullNoteViewModel(
+            container: FullNoteViewModel.Container(
+                interactor: interactor,
+                output: coordinator,
+                note: note)
+        )
+        let viewController = FullNoteViewController(
+            container: FullNoteViewController.Container(
+                viewModel: viewModel)
         )
         return viewController
     }

@@ -9,7 +9,7 @@
 import Foundation
 
 struct SessionData: Codable {
-    let status: String
+    let status: Int
     let data: Session?
 }
 

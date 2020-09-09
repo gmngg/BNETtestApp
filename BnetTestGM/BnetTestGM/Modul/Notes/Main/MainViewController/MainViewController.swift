@@ -15,35 +15,50 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("prrr")
         setupView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        viewModel.getSession()
     }
     
     func setupView() {
         title = "Notes"
         view.backgroundColor = .white
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target:self, action: #selector(addNewNote))
-        navigationController?.navigationBar.prefersLargeTitles = true
+        viewModel.getSession()
+        setupTableView()
+        configureView()
+    }
+    
+    func setupTableView() {
         tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.register(MainViewCell.self, forCellReuseIdentifier: "noteCell")
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-        viewModel.getSession()
+    }
+    
+    func configureView() {
+        viewModel.showMassege = {
+            let alert = UIAlertController(title: "Ошибка", message: "Обновите данныу ", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Обновить", style: .default, handler: { [weak self] action in
+                self?.tableView.reloadData()
+                self?.viewModel.getSession()
+            })
+            alert.addAction(alertAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        viewModel.updateNote = {
+            self.tableView.reloadData()
+        }
     }
     
     required init(container: Container) {
         viewModel = container.viewModel
         super.init(nibName: nil, bundle: nil)
-    }
-    
-    func configureView() {
-        viewModel.showMassege? = {
-            func showMassege() {
-                
-            }
-        }
-            
     }
     
     @available(*, unavailable)
@@ -63,6 +78,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         guard var cell = tableView.dequeueReusableCell(withIdentifier: MainViewCell.reuseId, for: indexPath) as? MainViewCell else {
             return UITableViewCell()
             }
+        
         cell = MainViewCell(style: .subtitle, reuseIdentifier: MainViewCell.reuseId)
         
         if let note = viewModel.noteList?[indexPath.row] {

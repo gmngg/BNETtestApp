@@ -13,12 +13,15 @@ import AuthenticationServices
 protocol RouterInput {
     func routeToRoot()
     func routeNewNotes(session: String)
-    func routeViewNotes(note: Note?)
+    func routeViewNotes(note: Note)
+    func popToRoot()
 }
 
 class Router: NSObject {
+    
+    var navigaton: UINavigationController?
     private var assembly: Assembly
-    weak var context: UIWindow?
+    var context: UIWindow?
     
     init(assembly: Assembly) {
         self.assembly = assembly
@@ -26,16 +29,31 @@ class Router: NSObject {
 }
 
 extension Router: RouterInput {
+    
     func routeToRoot() {
         let viewController = assembly.mainViewController()
         let navi = UINavigationController(rootViewController: viewController)
         
+        navigaton = navi
+        
         context?.rootViewController = navi
         context?.makeKeyAndVisible()
     }
+    
     func routeNewNotes(session: String) {
+        let viewController = assembly.newNoteViewController(sessionId: session)
+        
+        navigaton?.pushViewController(viewController, animated: true)
     }
-    func routeViewNotes(note: Note?) {
+    
+    func routeViewNotes(note: Note) {
+        let viewController = assembly.fullNoteViewController(note: note)
+        
+        navigaton?.pushViewController(viewController, animated: true)
+    }
+    
+    func popToRoot() {
+        navigaton?.popToRootViewController(animated: true)
     }
 }
 

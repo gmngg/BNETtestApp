@@ -10,6 +10,7 @@ import Foundation
 
 protocol MainViewModelInterface {
     var showMassege: (() -> Void)? {get set}
+    var updateNote: (() -> Void)? {get set}
     func fullNote(note: Note?)
     func addNewNote()
     var noteList: [Note]? {get set}
@@ -20,13 +21,18 @@ protocol MainViewModelInterface {
 
 protocol MainViewModelOutput {
     func addNewNote(session: String)
-    func tapOnFullView(note: Note?)
+    func tapOnFullView(note: Note)
 }
 
 class MainViewModel: MainViewModelInterface {
+    var updateNote: (() -> Void)?
+    
     var showMassege: (() -> Void)?
     
     func fullNote(note: Note?) {
+        guard let note = note else {
+            return
+        }
         output.tapOnFullView(note: note)
     }
     
@@ -55,9 +61,6 @@ class MainViewModel: MainViewModelInterface {
         return data
     }
     
-    
-    var dataCreated: String?
-    
     func getSession() {
         sessionId = userDefaults.string(forKey: "sessionId")
         if sessionId == nil {
@@ -70,6 +73,7 @@ class MainViewModel: MainViewModelInterface {
     var sessionId: String?
     var noteList: [Note]? {
         didSet {
+            self.updateNote?()
         }
     }
     
@@ -84,12 +88,11 @@ class MainViewModel: MainViewModelInterface {
     }
     
     func createdSession() {
-        interactor.getSession(success: { [weak self] (sessionData) in
-            self?.sessionId = sessionData?.data?.id
-            self?.userDefaults.set(self?.sessionId, forKey: "sessionId")
+        interactor.getSession(success: {  (sessionData) in
+            self.sessionId = sessionData?.data?.session
+            self.userDefaults.set(self.sessionId, forKey: "sessionId")
         }, failure: { (error) in
             print(error)
-            self.showMassege?()
         })
     }
     
@@ -99,25 +102,15 @@ class MainViewModel: MainViewModelInterface {
         }
         interactor.getNotes(session: sessionId, success: { [weak self] (noteData) in
             self?.noteList = noteData?.data.first
-            }, failure: { error in
-                print(error)
+            }, failure: { [weak self] error in
+                self?.showMassege?()
         })
     }
 }
 
-    
 extension MainViewModel {
     struct Container {
         let interactor: InteractorInput
         let output: MainViewModelOutput
-    }
-}
-
-extension MainViewModel: MainViewModelOutput {
-    func addNewNote(session: String) {
-        
-    }
-    
-    func tapOnFullView(note: Note?) {
     }
 }

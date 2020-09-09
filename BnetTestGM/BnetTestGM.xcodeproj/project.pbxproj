@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		504693F225018C4D000FF54C /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504693F125018C4D000FF54C /* MainViewModel.swift */; };
+		504693F82503F9D9000FF54C /* NewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504693F72503F9D9000FF54C /* NewNoteViewController.swift */; };
+		504693FA250422A4000FF54C /* NewNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504693F9250422A4000FF54C /* NewNoteViewModel.swift */; };
+		504693FC25059B3E000FF54C /* FullNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504693FB25059B3E000FF54C /* FullNoteViewModel.swift */; };
+		504693FE25059B4D000FF54C /* FullNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504693FD25059B4D000FF54C /* FullNoteViewController.swift */; };
 		50991FF524ED51EC00412838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50991FF424ED51EC00412838 /* AppDelegate.swift */; };
 		50991FFB24ED51EE00412838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50991FFA24ED51EE00412838 /* Assets.xcassets */; };
 		50991FFE24ED51EE00412838 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50991FFD24ED51EE00412838 /* Preview Assets.xcassets */; };
@@ -29,6 +33,10 @@
 
 /* Begin PBXFileReference section */
 		504693F125018C4D000FF54C /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		504693F72503F9D9000FF54C /* NewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteViewController.swift; sourceTree = "<group>"; };
+		504693F9250422A4000FF54C /* NewNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteViewModel.swift; sourceTree = "<group>"; };
+		504693FB25059B3E000FF54C /* FullNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullNoteViewModel.swift; sourceTree = "<group>"; };
+		504693FD25059B4D000FF54C /* FullNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullNoteViewController.swift; sourceTree = "<group>"; };
 		50991FF124ED51EC00412838 /* BnetTestGM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BnetTestGM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50991FF424ED51EC00412838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50991FFA24ED51EE00412838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +75,38 @@
 				504693F125018C4D000FF54C /* MainViewModel.swift */,
 			);
 			path = MainViewModel;
+			sourceTree = "<group>";
+		};
+		504693F32503F215000FF54C /* NewNoteViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				504693F9250422A4000FF54C /* NewNoteViewModel.swift */,
+			);
+			path = NewNoteViewModel;
+			sourceTree = "<group>";
+		};
+		504693F42503F222000FF54C /* NewNoteViewContoller */ = {
+			isa = PBXGroup;
+			children = (
+				504693F72503F9D9000FF54C /* NewNoteViewController.swift */,
+			);
+			path = NewNoteViewContoller;
+			sourceTree = "<group>";
+		};
+		504693F52503F2B7000FF54C /* FulNotesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				504693FD25059B4D000FF54C /* FullNoteViewController.swift */,
+			);
+			path = FulNotesViewController;
+			sourceTree = "<group>";
+		};
+		504693F62503F2C7000FF54C /* FullNoteViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				504693FB25059B3E000FF54C /* FullNoteViewModel.swift */,
+			);
+			path = FullNoteViewModel;
 			sourceTree = "<group>";
 		};
 		50991FE824ED51EC00412838 = {
@@ -149,8 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				5099201424ED60CE00412838 /* Main */,
-				5099201324ED60BF00412838 /* NewNotes */,
-				5099201524ED613C00412838 /* ViewNotes */,
+				5099201324ED60BF00412838 /* NewNote */,
+				5099201524ED613C00412838 /* FullNotes */,
 				5099201224ED60B600412838 /* Interactor */,
 				5099201124ED60A500412838 /* Coordinator */,
 				5099201024ED608D00412838 /* Router */,
@@ -191,11 +231,13 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
-		5099201324ED60BF00412838 /* NewNotes */ = {
+		5099201324ED60BF00412838 /* NewNote */ = {
 			isa = PBXGroup;
 			children = (
+				504693F32503F215000FF54C /* NewNoteViewModel */,
+				504693F42503F222000FF54C /* NewNoteViewContoller */,
 			);
-			path = NewNotes;
+			path = NewNote;
 			sourceTree = "<group>";
 		};
 		5099201424ED60CE00412838 /* Main */ = {
@@ -207,11 +249,13 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		5099201524ED613C00412838 /* ViewNotes */ = {
+		5099201524ED613C00412838 /* FullNotes */ = {
 			isa = PBXGroup;
 			children = (
+				504693F62503F2C7000FF54C /* FullNoteViewModel */,
+				504693F52503F2B7000FF54C /* FulNotesViewController */,
 			);
-			path = ViewNotes;
+			path = FullNotes;
 			sourceTree = "<group>";
 		};
 		5099201824ED715600412838 /* MainViewController */ = {
@@ -332,13 +376,17 @@
 				5099201D24ED71BE00412838 /* MainViewCell.swift in Sources */,
 				5099201F24ED772400412838 /* MailInteractor.swift in Sources */,
 				5099202724ED946900412838 /* Assembly.swift in Sources */,
+				504693FE25059B4D000FF54C /* FullNoteViewController.swift in Sources */,
 				5099202D24EE9EB800412838 /* NetworkServise.swift in Sources */,
 				5099202F24EFE16400412838 /* NoteData.swift in Sources */,
 				5099203524F3D98200412838 /* RequestNetwork.swift in Sources */,
+				504693FC25059B3E000FF54C /* FullNoteViewModel.swift in Sources */,
+				504693F82503F9D9000FF54C /* NewNoteViewController.swift in Sources */,
 				5099202524ED93EA00412838 /* Injectable.swift in Sources */,
 				5099203324EFF74B00412838 /* API.swift in Sources */,
 				50991FF524ED51EC00412838 /* AppDelegate.swift in Sources */,
 				5099203124EFE2E300412838 /* SessionData.swift in Sources */,
+				504693FA250422A4000FF54C /* NewNoteViewModel.swift in Sources */,
 				5099201724ED68C300412838 /* MainViewController.swift in Sources */,
 				5099202B24ED94BF00412838 /* Coordinator.swift in Sources */,
 			);
@@ -478,6 +526,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"BnetTestGM/Preview Content\"";
+				DEVELOPMENT_TEAM = 84T5DL78TW;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BnetTestGM/AppDelegate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -497,6 +546,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"BnetTestGM/Preview Content\"";
+				DEVELOPMENT_TEAM = 84T5DL78TW;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BnetTestGM/AppDelegate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

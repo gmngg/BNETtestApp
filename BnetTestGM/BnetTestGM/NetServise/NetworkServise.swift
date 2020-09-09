@@ -34,7 +34,7 @@ final class NetworkData: NetworkDataProtocol {
     }
     
     func getSession(completion: @escaping (Result<SessionData?, Error>) -> Void) {
-        let parameters = ["a" : API.newSession]
+        let parameters = ["a": API.newSession]
         self.fetchJSON(parameters: parameters, response: completion)
     }
     

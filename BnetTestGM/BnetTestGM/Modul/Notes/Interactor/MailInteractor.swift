@@ -7,7 +7,7 @@
 //
 
 import Foundation
-//{"status":1,"data":{"token":"Mq9aOiL-c0-tx4xq4S"}}
+
 protocol InteractorInput {
     func getSession(success: ((SessionData?) -> Void)?, failure: ((Error) -> Void)?)
     func getNotes(session: String, success: (((NoteData)?) -> Void)?, failure:((Error) -> Void)?)
@@ -25,6 +25,7 @@ class Interactor: Injectable {
         networkServise = container.networkServise
     }
 }
+
 extension Interactor {
     struct  Container {
         let networkServise: NetworkDataProtocol
@@ -66,6 +67,4 @@ extension Interactor: InteractorInput {
             }
         })
     }
-    
-    
 }
